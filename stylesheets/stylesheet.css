@@ -1,9 +1,9 @@
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
-@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
+@import url(http://fonts.googleapis.com/earlyaccess/amiri.css);
 
 .ar-font {
 /*	font-family: 'Droid Arabic Kufi', serif;*/
-font-family: 'Alef Hebrew', serif;
+font-family: 'Amiri', serif;
 }
 
 
