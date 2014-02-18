@@ -1,9 +1,9 @@
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
-@import url(http://fonts.googleapis.com/earlyaccess/dhyana.css);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
 
 .ar-font {
 /*	font-family: 'Droid Arabic Kufi', serif;*/
-font-family: 'Dhyana', serif;
+font-family: 'Droid Arabic Naskh', serif;
 }
 
 
