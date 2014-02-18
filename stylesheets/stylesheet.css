@@ -1,11 +1,4 @@
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
-@import url(http://fonts.googleapis.com/earlyaccess/droidsanstamil.css);
-
-.ar-font {
-/*	font-family: 'Droid Arabic Kufi', serif;*/
-font-family: 'Droid Sans Tamil', serif;
-}
-
 
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -382,4 +375,10 @@ footer a:hover {
 @media only screen and (max-width: 479px) {}
 
 
+/* helpers */
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-left   { text-align: left; }
 
+
+.ar-font { font-family: 'Droid Arabic Kufi', serif; }
