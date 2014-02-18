@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
-
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -72,7 +72,8 @@ header {
 }
 
 header h1 {
-  font-family: 'Chivo', 'Helvetica Neue', Helvetica, Arial, serif; font-weight: 900;
+  font-family: 'Open Sans', sans-serif; 
+  font-weight: 400;
   letter-spacing: -1px;
   font-size: 48px;
   color: #303030;
@@ -256,9 +257,9 @@ h2 {
 } 
 
 h3 {
-  color: #d5000d;
+  color: #D32362;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: normal;
   margin-bottom: 8px;
 } 
  
