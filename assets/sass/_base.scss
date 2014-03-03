@@ -1,0 +1,66 @@
+/* ===[ vars ]=== */
+$animation-support: webkit, moz, o, ms, not khtml;
+
+/* ===[ mixins ]=== */
+
+// #keyframes
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+// #Vendor Prefixing
+@mixin vendorize($property, $value) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    -ms-#{$property}: $value;
+    -o-#{$property}: $value;
+    #{$property}: $value;
+}
+
+// #_position - offsets
+$position-default-top:    null !default;
+$position-default-right:  null !default;
+$position-default-bottom: null !default;
+$position-default-left:   null !default;
+
+// @private
+@mixin _position($type,
+                 $top: $position-default-top, $right: $position-default-right,
+                 $bottom: $position-default-bottom, $left: $position-default-left) {
+  $allowed_types: 'absolute' 'relative' 'fixed';
+
+  @if not index($allowed_types, $type) {
+    @warn "Unknow position: #{$type}.";
+  }
+
+  position: $type;
+  @each $data in top $top, right $right, bottom $bottom, left $left {
+    #{nth($data, 1)}: nth($data, 2);
+  }
+}
+
+@mixin absolute($top: $position-default-top, $right: $position-default-right,
+                $bottom: $position-default-bottom, $left: $position-default-left) {
+  @include _position(absolute, $top, $right, $bottom, $left);
+}
+
+@mixin relative($top: $position-default-top, $right: $position-default-right,
+                $bottom: $position-default-bottom, $left: $position-default-left) {
+  @include _position(relative, $top, $right, $bottom, $left);
+}
+
+@mixin fixed($top: $position-default-top, $right: $position-default-right,
+                $bottom: $position-default-bottom, $left: $position-default-left) {
+  @include _position(fixed, $top, $right, $bottom, $left);
+}

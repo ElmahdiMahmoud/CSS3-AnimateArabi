@@ -1,0 +1,204 @@
+@import "compass",
+          "_base";
+
+.demo-box {
+    $boxSize: 100px;
+    width: $boxSize;
+	height: $boxSize;
+	background-color: #fff;
+    @include box-shadow (0 0 1px #9aa6b2);
+    @include fixed($top: 280px, $right: 100px);
+
+    .flag {
+        $flagSize: 80px;
+        width: $flagSize;
+        height: $flagSize;
+        @include absolute($top: 50%, $left: 50%);
+        @include border-radius (2px);
+        margin: (-$flagSize /2) 0 0 (-$flagSize /2);
+        background: #F57F7F url('../images/mustache.png') no-repeat center center;
+        @include vendorize(animation-duration, 1s); 
+    }
+    
+}
+
+/* ===============[ Rotate ]=============== */
+
+#openLb { 
+    @include experimental('animation-name', openLDIn, $animation-support);
+    &.active { @include experimental('animation-name', openLDOut, $animation-support); }
+}
+
+@include keyframes(openLDIn) {
+  0%    { @include transform-origin( bottom, left ); }
+  100%  { @include transform( rotate(-120deg) ); @include transform-origin( left, bottom ); }
+}
+
+@include keyframes(openLDOut) {
+  0%    {   @include transform( rotate(-120deg) ); @include transform-origin( bottom, left ); }
+  100%  { @include transform-origin( left, bottom ); }
+}
+
+
+#openRb { 
+    @include experimental('animation-name', openRDIn, $animation-support);
+    &.active { @include experimental('animation-name', openRDOut, $animation-support); }
+}
+
+@include keyframes(openRDIn) {
+  0%    { @include transform-origin( bottom, right ); }
+  100%  { @include transform( rotate(120deg) ); @include transform-origin( bottom, right ); }
+}
+
+@include keyframes(openRDOut) {
+  0%    { @include transform( rotate(120deg) ); @include transform-origin( bottom, right ); }
+  100%  { @include transform-origin( bottom, right ); }
+}
+
+#openTl { 
+    @include experimental('animation-name', openULIn, $animation-support);
+    &.active { @include experimental('animation-name', openULOut, $animation-support); }
+}
+
+@include keyframes(openULIn) {
+  0%    { @include transform-origin( top, left ); }
+  100%  { @include transform( rotate(-150deg) ); @include transform-origin( top, left ); }
+}
+
+@include keyframes(openULOut) {
+  0%    { @include transform( rotate(-150deg) ); @include transform-origin( top, left ); }
+  100%  { @include transform-origin( top, left ); }
+}
+
+
+#openTr { 
+    @include experimental('animation-name', openURIn, $animation-support);
+    &.active { @include experimental('animation-name', openUROut, $animation-support); }
+}
+
+@include keyframes(openURIn) {
+  0%    { @include transform-origin( top, right ); }
+  100%  { @include transform( rotate(150deg) ); @include transform-origin( top, right ); }
+}
+
+@include keyframes(openUROut) {
+  0%    { @include transform( rotate(150deg) ); @include transform-origin( top, right ); }
+  100%  { @include transform-origin( top, right ); }
+}
+
+
+/* ===============[ perspective ]=============== */
+
+#presR { 
+    @include backface-visibility(visible);
+    @include experimental('animation-name', presRIn, $animation-support);
+    &.active { @include experimental('animation-name', presROut, $animation-support); }
+}
+
+@include keyframes(presRIn) {
+  0%    { 
+        @include transform-origin( 100%, 0 ); 
+        @include transform( perspective(800) rotateY(0deg) ); 
+    }
+  100%  { 
+        @include transform-origin( 100%, 0 ); 
+        @include transform( perspective(800) rotateY(180deg) ); 
+    }
+}
+
+@include keyframes(presROut) {
+  0%  { 
+        @include transform-origin( 100%, 0 ); 
+        @include transform( perspective(800) rotateY(180deg) ); 
+    }
+  100%    { 
+        @include transform-origin( 100%, 0 ); 
+        @include transform( perspective(800) rotateY(0deg) ); 
+    }
+}
+
+#presL { 
+    @include backface-visibility(visible);
+    @include experimental('animation-name', presLIn, $animation-support);
+    &.active { @include experimental('animation-name', presLOut, $animation-support); }
+}
+
+@include keyframes(presLIn) {
+  0%    { 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateY(0deg) ); 
+    }
+  100%  { 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateY(-180deg) ); 
+    }
+}
+
+@include keyframes(presLOut) {
+  0%  { 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateY(-180deg) ); 
+    }
+  100%    { 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateY(0deg) ); 
+    }
+}
+
+
+#presT { 
+    @include backface-visibility(visible);
+    @include experimental('animation-name', presTIn, $animation-support);
+    &.active { @include experimental('animation-name', presTOut, $animation-support); }
+}
+
+@include keyframes(presTIn) {
+  0%    { 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateX(0deg) ); 
+    }
+  100%  { 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateX(180deg) ); 
+    }
+}
+
+@include keyframes(presTOut) {
+  0%  { 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateX(180deg) ); 
+    }
+  100%    { 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateX(0deg) ); 
+    }
+}
+
+#presB { 
+    @include backface-visibility(visible);
+    @include experimental('animation-name', presBIn, $animation-support);
+    &.active { @include experimental('animation-name', presBOut, $animation-support); }
+}
+
+@include keyframes(presBIn) {
+  0%    { 
+        @include transform-origin( 0, 100% ); 
+        @include transform( perspective(600) rotateX(0deg) ); 
+    }
+  100%  { 
+        @include transform-origin( 0, 100% ); 
+        @include transform( perspective(600) rotateX(-180deg) ); 
+    }
+}
+
+@include keyframes(presBOut) {
+  0%  { 
+        @include transform-origin( 0, 100% ); 
+        @include transform( perspective(600) rotateX(-180deg) ); 
+    }
+  100%    { 
+        @include transform-origin( 0, 100% ); 
+        @include transform( perspective(600) rotateX(0deg) ); 
+    }
+}
+
