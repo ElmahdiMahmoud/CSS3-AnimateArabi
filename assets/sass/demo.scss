@@ -16,7 +16,8 @@
         @include absolute($top: 50%, $left: 50%);
         @include border-radius (2px);
         margin: (-$flagSize /2) 0 0 (-$flagSize /2);
-        background: #F57F7F url('../images/mustache.png') no-repeat center center;
+        //background: #F57F7F url('../images/mustache.png') no-repeat center center;
+        background: #ffe8a4 url('../images/mustache.png') no-repeat center center;
         @include vendorize(animation-duration, 1s); 
     }
     
@@ -35,7 +36,7 @@
 }
 
 @include keyframes(openLDOut) {
-  0%    {   @include transform( rotate(-120deg) ); @include transform-origin( bottom, left ); }
+  0%    { @include transform( rotate(-120deg) ); @include transform-origin( bottom, left ); }
   100%  { @include transform-origin( left, bottom ); }
 }
 
@@ -86,6 +87,67 @@
   100%  { @include transform-origin( top, right ); }
 }
 
+/* ===============[ Rotate fadeOut ]=============== */
+
+#openLbfo { 
+    @include experimental('animation-name', openLDInfo, $animation-support);
+    &.active { @include experimental('animation-name', openLDOutfo, $animation-support); }
+}
+
+@include keyframes(openLDInfo) {
+  0%    { @include opaque; @include transform-origin( bottom, left ); }
+  100%  { @include transparent; @include transform( rotate(-120deg) ); @include transform-origin( left, bottom ); }
+}
+
+@include keyframes(openLDOutfo) {
+  0%    { @include transparent; @include transform( rotate(-120deg) ); @include transform-origin( bottom, left ); }
+  100%  { @include opaque; @include transform-origin( left, bottom ); }
+}
+
+#openRbfo { 
+    @include experimental('animation-name', openRDInfo, $animation-support);
+    &.active { @include experimental('animation-name', openRDOutfo, $animation-support); }
+}
+
+@include keyframes(openRDInfo) {
+  0%    { @include opaque; @include transform-origin( bottom, right ); }
+  100%  { @include transparent; @include transparent; @include transform( rotate(120deg) ); @include transform-origin( bottom, right ); }
+}
+
+@include keyframes(openRDOutfo) {
+  0%    { @include transparent; @include transparent; @include transform( rotate(120deg) ); @include transform-origin( bottom, right ); }
+  100%  { @include opaque; @include transform-origin( bottom, right ); }
+}
+
+#openTlfo { 
+    @include experimental('animation-name', openULInfo, $animation-support);
+    &.active { @include experimental('animation-name', openULOutfo, $animation-support); }
+}
+
+@include keyframes(openULInfo) {
+  0%    { @include opaque; @include transform-origin( top, left ); }
+  100%  { @include transparent; @include transform( rotate(-150deg) ); @include transform-origin( top, left ); }
+}
+
+@include keyframes(openULOutfo) {
+  0%    { @include transparent; @include transform( rotate(-150deg) ); @include transform-origin( top, left ); }
+  100%  { @include opaque; @include transform-origin( top, left ); }
+}
+
+#openTrfo { 
+    @include experimental('animation-name', openURInfo, $animation-support);
+    &.active { @include experimental('animation-name', openUROutfo, $animation-support); }
+}
+
+@include keyframes(openURInfo) {
+  0%    { @include opaque; @include transform-origin( top, right ); }
+  100%  { @include transparent; @include transform( rotate(150deg) ); @include transform-origin( top, right ); }
+}
+
+@include keyframes(openUROutfo) {
+  0%    { @include transparent; @include transform( rotate(150deg) ); @include transform-origin( top, right ); }
+  100%  { @include opaque; @include opaque; @include transform-origin( top, right ); }
+}
 
 /* ===============[ perspective ]=============== */
 
@@ -202,3 +264,132 @@
     }
 }
 
+/* ===============[ perspective fadeOut ]=============== */
+
+#presRfo { 
+    @include backface-visibility(visible);
+    @include experimental('animation-name', presRInfo, $animation-support);
+    &.active { @include experimental('animation-name', presROutfo, $animation-support); }
+}
+
+@include keyframes(presRInfo) {
+  0%    { 
+		@include opaque; 
+        @include transform-origin( 100%, 0 ); 
+        @include transform( perspective(800) rotateY(0deg) ); 
+    }
+  100%  { 
+		@include transparent; 
+        @include transform-origin( 100%, 0 ); 
+        @include transform( perspective(800) rotateY(180deg) ); 
+    }
+}
+
+@include keyframes(presROutfo) {
+  0%  { 
+		@include transparent;
+        @include transform-origin( 100%, 0 ); 
+        @include transform( perspective(800) rotateY(180deg) ); 
+    }
+  100%    { 
+		@include opaque;
+        @include transform-origin( 100%, 0 ); 
+        @include transform( perspective(800) rotateY(0deg) ); 
+    }
+}
+
+#presLfo { 
+    @include backface-visibility(visible);
+    @include experimental('animation-name', presLInfo, $animation-support);
+    &.active { @include experimental('animation-name', presLOutfo, $animation-support); }
+}
+
+@include keyframes(presLInfo) {
+  0%    { 
+		@include opaque;
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateY(0deg) ); 
+    }
+  100%  { 
+		@include transparent; 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateY(-180deg) ); 
+    }
+}
+
+@include keyframes(presLOutfo) {
+  0%  { 
+		@include transparent; 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateY(-180deg) ); 
+    }
+  100%    { 
+		@include opaque; 
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateY(0deg) ); 
+    }
+}
+
+#presTfo { 
+    @include backface-visibility(visible);
+    @include experimental('animation-name', presTInfo, $animation-support);
+    &.active { @include experimental('animation-name', presTOutfo, $animation-support); }
+}
+
+@include keyframes(presTInfo) {
+  0%    { 
+		@include opaque;
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateX(0deg) ); 
+    }
+  100%  { 
+		@include transparent;
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateX(180deg) ); 
+    }
+}
+
+@include keyframes(presTOutfo) {
+  0%  { 
+		@include transparent;
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateX(180deg) ); 
+    }
+  100%    { 
+		@include opaque;
+        @include transform-origin( 0, 0 ); 
+        @include transform( perspective(600) rotateX(0deg) ); 
+    }
+}
+
+#presBfo { 
+    @include backface-visibility(visible);
+    @include experimental('animation-name', presBInfo, $animation-support);
+    &.active { @include experimental('animation-name', presBOutfo, $animation-support); }
+}
+
+@include keyframes(presBInfo) {
+  0%    { 
+		@include opaque;
+        @include transform-origin( 0, 100% ); 
+        @include transform( perspective(600) rotateX(0deg) ); 
+    }
+  100%  { 
+		@include transparent; 
+        @include transform-origin( 0, 100% ); 
+        @include transform( perspective(600) rotateX(-180deg) ); 
+    }
+}
+
+@include keyframes(presBOutfo) {
+  0%  { 
+		@include transparent; 
+        @include transform-origin( 0, 100% ); 
+        @include transform( perspective(600) rotateX(-180deg) ); 
+    }
+  100%    { 
+		@include opaque;
+        @include transform-origin( 0, 100% ); 
+        @include transform( perspective(600) rotateX(0deg) ); 
+    }
+}
