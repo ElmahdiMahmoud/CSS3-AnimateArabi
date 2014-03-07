@@ -9,7 +9,8 @@
     @include box-shadow (0 0 1px #9aa6b2);
     @include fixed($top: 280px, $right: 100px);
 
-    .flag {
+    .flag,
+	.shanabo {
         $flagSize: 80px;
         width: $flagSize;
         height: $flagSize;
